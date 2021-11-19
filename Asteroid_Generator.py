@@ -16,15 +16,15 @@ def isfloat(string):
     except ValueError:
         return False
         
+
 def get_period(StarMass,SMA):
     v_G=6.6725985e-11
     v_c=299792000
     v_meter=float(SMA)*149597870691.0
     v_mass=float(StarMass)*1.98894729428839e30
     
-    return (2 * math.pi * math.sqrt((v_meter**3)/(v_G * v_mass)))/ 3.15581e7
-    
-    return 0.0
+    return (2 * math.pi * math.sqrt((v_meter**3)/(v_G * v_mass))) / 3.15581e7
+
 
 def gen_asteroids(Fname,StarName,StarMass,NumofAsteroids,MinRadius,MaxRadius,MinSMA,MaxSMA,MaxEccentricity):
     print("File name: {0}".format(Fname))
