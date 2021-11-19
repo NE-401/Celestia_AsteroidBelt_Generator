@@ -27,6 +27,7 @@ def get_period(StarMass,SMA):
 
 
 def gen_asteroids(Fname,StarName,StarMass,NumofAsteroids,MinRadius,MaxRadius,MinSMA,MaxSMA,MaxEccentricity):
+    print("--------------- Properties ---------------")
     print("File name: {0}".format(Fname))
     print("Star name: {0}".format(StarName))
     print("Star mass: {0} Solar mass".format(StarMass))
@@ -34,7 +35,8 @@ def gen_asteroids(Fname,StarName,StarMass,NumofAsteroids,MinRadius,MaxRadius,Min
     print("Radius range: {0} ~ {1} km".format(MinRadius,MaxRadius))
     print("Semi-Major Axis range: {0} ~ {1} AU".format(MinSMA,MaxSMA))
     print("Eccentricity range: {0} ~ {1}".format(0.000,MaxEccentricity))
-    
+    print("------------------------------------------")
+
     mesh=('asteroid.cms','bacchus.cmod','castalia.cmod','epimetheus.cmod','golevka.cmod','janus.cmod','ky26.cmod','pandora.cmod','proteus.cmod','roughsphere.cms')
     
     with open(Fname+".ssc","w",encoding="utf-8") as f:
@@ -94,7 +96,7 @@ def main():
     # File already exists?
     if os.path.exists(v_Fname+".ssc"):
         while True:
-            print("File {0}.ssc exists. Do you want overwrite it? [y/N]: ".format(v_Fname+".ssc"),end="")
+            print("File {0} exists. Do you want overwrite it? [y/N]: ".format(v_Fname+".ssc"),end="")
             f=str(input())
             
             if f == "y" or f == "Y":
@@ -124,14 +126,16 @@ def main():
             print("Input rule: ^[0-9]+\.[0-9]+ ")
 
     # Input Number of Asteroids.
+    # Asteroid Limit
+    AsteroidLimit=65535
     while True:
         print("Number of Asteroids: ",end="")
         v_NumofAsteroids=input()
         
-        if v_NumofAsteroids.isnumeric() and int(v_NumofAsteroids) > 0 and int(v_NumofAsteroids) <= 1024:
+        if v_NumofAsteroids.isnumeric() and int(v_NumofAsteroids) > 0 and int(v_NumofAsteroids) <= AsteroidLimit:
             break
         else:
-            print("Number must be 1~1024.")
+            print("Number must be 1~{0}.".format(AsteroidLimit))
 
     # Minimum Radius[km]
     v_MinRadius=0.850
