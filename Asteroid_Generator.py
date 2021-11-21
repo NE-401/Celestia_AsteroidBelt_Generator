@@ -19,7 +19,6 @@ def isfloat(string):
 
 def get_period(StarMass,SMA):
     v_G=6.6725985e-11
-    v_c=299792000
     v_meter=float(SMA)*149597870691.0
     v_mass=float(StarMass)*1.98894729428839e30
     
